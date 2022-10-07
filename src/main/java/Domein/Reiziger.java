@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "reiziger")
 public class Reiziger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,12 +19,15 @@ public class Reiziger {
 
     private Date geboortedatum;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-    @Transient
+    @OneToOne(
+            mappedBy = "reiziger",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
     private Adres adres;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-    @Transient
+    @OneToMany(mappedBy = "reiziger", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OVChipkaart> alleOVChipkaarten = new ArrayList<>();
 
     public Reiziger(int reiziger_id, String voorletters, String tussenvoegsel, String achternaam, Date geboortedatum) {

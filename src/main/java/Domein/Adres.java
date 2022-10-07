@@ -2,10 +2,7 @@ package Domein;
 
 import javax.persistence.*;
 
-@Entity
-//@AttributeOverrides({
-//        @AttributeOverride(name = "adres_id")
-//})
+@Entity(name = "adres")
 public class Adres {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +16,8 @@ public class Adres {
 
     private String woonplaats;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-    @Transient
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reiziger_id")
     private Reiziger reiziger;
 
     public Adres(int adres_id, String postcode, String huisnummer, String straat, String woonplaats, Reiziger reiziger) {
