@@ -19,8 +19,8 @@ public class Reiziger {
 
     private Date geboortedatum;
 
-    @OneToOne(cascade = CascadeType.ALL)
-//    @Transient
+//    @OneToOne(cascade = CascadeType.ALL)
+    @Transient
     private Adres adres;
 
 //    @OneToMany(cascade = CascadeType.ALL)

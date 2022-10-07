@@ -19,8 +19,8 @@ public class Adres {
 
     private String woonplaats;
 
-    @OneToOne(cascade = CascadeType.ALL)
-//    @Transient
+//    @OneToOne(cascade = CascadeType.ALL)
+    @Transient
     private Reiziger reiziger;
 
     public Adres(int adres_id, String postcode, String huisnummer, String straat, String woonplaats, Reiziger reiziger) {
