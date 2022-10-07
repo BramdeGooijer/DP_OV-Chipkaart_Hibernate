@@ -91,6 +91,6 @@ public class Reiziger {
         }
 
 //        hier komt een if statement om te kijken of er een adres is
-        return String.format("Reiziger {#%s %s. %s %s, geb. %s}%s%s", this.getReiziger_id(), this.voorletters, this.tussenvoegsel, this.achternaam, this.geboortedatum, adres, ovchipkaart);
+        return String.format("Reiziger {#%s, %s., %s, %s, geb., %s}%s%s", this.getReiziger_id(), this.voorletters, this.tussenvoegsel, this.achternaam, this.geboortedatum, adres, ovchipkaart);
     }
 }

@@ -60,7 +60,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + product_nummer +
-                ", " + naam + ", " + beschrijving + ", " + prijs + '}';
+        return String.format("Product {%s, %s, %s, %s}", this.product_nummer, this.naam, this.beschrijving, this.prijs);
     }
 }

@@ -59,6 +59,6 @@ public class Adres {
     }
 
     public String toString() {
-        return String.format("Adres {#%s %s %s}",this.adres_id, this.postcode, this.huisnummer);
+        return String.format("Adres {#%s, %s, %s}",this.adres_id, this.postcode, this.huisnummer);
     }
 }
