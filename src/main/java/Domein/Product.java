@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +16,7 @@ public class Product {
 
     private int prijs;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-    @Transient
+    @ManyToMany(mappedBy = "alleProducten")
     private List<OVChipkaart> allOVChipkaarten = new ArrayList<>();
 
     public Product(int product_nummer, String naam, String beschrijving, int prijs) {
