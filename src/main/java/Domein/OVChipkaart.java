@@ -1,5 +1,7 @@
 package Domein;
 
+import Interfaces.Product.ProductDAO;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -21,7 +23,12 @@ public class OVChipkaart {
     @JoinColumn(name = "reiziger_id")
     private Reiziger reiziger;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
+    @JoinTable(
+            name = "ov_chipkaart_product",
+            joinColumns = @JoinColumn(name = "kaart_nummer"),
+            inverseJoinColumns = @JoinColumn(name = "product_nummer")
+    )
     private List<Product> alleProducten = new ArrayList<>();
 
     public OVChipkaart(int kaart_nummer, Date geldig_tot, int klasse, int saldo, Reiziger reiziger) {
@@ -59,6 +66,10 @@ public class OVChipkaart {
 
     @Override
     public String toString() {
-        return String.format("OVChipkaart {%s, %s, %s, %s}", this.kaart_nummer, this.geldig_tot, this.klasse, this.saldo);
+        String producten = "";
+        if (alleProducten.size() > 0) {
+            producten += ", " + alleProducten;
+        }
+        return String.format("OVChipkaart {%s, %s, %s, %s}%s", this.kaart_nummer, this.geldig_tot, this.klasse, this.saldo, producten);
     }
 }

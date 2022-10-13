@@ -1,5 +1,9 @@
 
 
+import Domein.Adres;
+import Domein.Reiziger;
+import Interfaces.Adres.AdresDAO;
+import Interfaces.Adres.AdresDAOHibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,6 +12,7 @@ import org.hibernate.query.Query;
 
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.Metamodel;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -43,6 +48,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         testFetchAll();
+//        testDAOHibernate();
     }
 
     /**
@@ -64,5 +70,18 @@ public class Main {
         } finally {
             session.close();
         }
+    }
+
+    private static void testDAOHibernate() {
+        Session session = getSession();
+
+        AdresDAO adao = new AdresDAOHibernate(session);
+
+        Reiziger reiziger = new Reiziger(101, "B", "de", "Gooijer", Date.valueOf("2004-01-01"));
+        Adres adres = new Adres(100, "1218GZ", "5", "Vuurvlind", "Hilversum", reiziger);
+
+        System.out.println("whaaaaaaaaaaaaaaaaaaaaa");
+
+        adao.save(adres);
     }
 }
