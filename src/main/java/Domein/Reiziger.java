@@ -78,6 +78,30 @@ public class Reiziger {
         this.adres = adres;
     }
 
+    public void setReiziger_id(int reiziger_id) {
+        this.reiziger_id = reiziger_id;
+    }
+
+    public void setVoorletters(String voorletters) {
+        this.voorletters = voorletters;
+    }
+
+    public void setTussenvoegsel(String tussenvoegsel) {
+        this.tussenvoegsel = tussenvoegsel;
+    }
+
+    public void setAchternaam(String achternaam) {
+        this.achternaam = achternaam;
+    }
+
+    public void setGeboortedatum(Date geboortedatum) {
+        this.geboortedatum = geboortedatum;
+    }
+
+    public void setAlleOVChipkaarten(List<OVChipkaart> alleOVChipkaarten) {
+        this.alleOVChipkaarten = alleOVChipkaarten;
+    }
+
     @Override
     public String toString() {
         String adres = "";

@@ -47,8 +47,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws SQLException {
-        testFetchAll();
-//        testDAOHibernate();
+//        testFetchAll();
+        testDAOHibernate();
     }
 
     /**
@@ -77,11 +77,5 @@ public class Main {
 
         AdresDAO adao = new AdresDAOHibernate(session);
 
-        Reiziger reiziger = new Reiziger(101, "B", "de", "Gooijer", Date.valueOf("2004-01-01"));
-        Adres adres = new Adres(100, "1218GZ", "5", "Vuurvlind", "Hilversum", reiziger);
-
-        System.out.println("whaaaaaaaaaaaaaaaaaaaaa");
-
-        adao.save(adres);
     }
 }

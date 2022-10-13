@@ -58,6 +58,30 @@ public class Adres {
         return reiziger;
     }
 
+    public void setAdres_id(int adres_id) {
+        this.adres_id = adres_id;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public void setHuisnummer(String huisnummer) {
+        this.huisnummer = huisnummer;
+    }
+
+    public void setStraat(String straat) {
+        this.straat = straat;
+    }
+
+    public void setWoonplaats(String woonplaats) {
+        this.woonplaats = woonplaats;
+    }
+
+    public void setReiziger(Reiziger reiziger) {
+        this.reiziger = reiziger;
+    }
+
     public String toString() {
         return String.format("Adres {#%s, %s, %s}",this.adres_id, this.postcode, this.huisnummer);
     }
