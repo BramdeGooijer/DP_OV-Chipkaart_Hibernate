@@ -8,7 +8,6 @@ import java.util.List;
 @Entity(name = "reiziger")
 public class Reiziger {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reiziger_id;
 
     private String voorletters;

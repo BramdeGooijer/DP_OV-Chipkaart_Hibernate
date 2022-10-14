@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity(name = "adres")
 public class Adres {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int adres_id;
 
     private String postcode;

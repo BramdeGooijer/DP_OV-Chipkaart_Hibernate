@@ -4,9 +4,12 @@ import Domein.Adres;
 import Domein.Reiziger;
 import Interfaces.Adres.AdresDAO;
 import Interfaces.Adres.AdresDAOHibernate;
+import Interfaces.Reiziger.ReizigerDAO;
+import Interfaces.Reiziger.ReizigerDAOHibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
@@ -74,8 +77,29 @@ public class Main {
 
     private static void testDAOHibernate() {
         Session session = getSession();
+        Transaction tx = session.beginTransaction();
 
-        AdresDAO adao = new AdresDAOHibernate(session);
+        AdresDAOHibernate adao = new AdresDAOHibernate(session, tx);
+        ReizigerDAOHibernate rdao = new ReizigerDAOHibernate(session, tx);
 
+//        maak reiziger en adres
+        Reiziger reiziger = new Reiziger(200, "b", "de", "Gooijer", Date.valueOf("2001-01-01"));
+        Adres adres = new Adres(200, "1218GZ", "5", "Vuurlvindermeent", "Hilversum", reiziger);
+
+//        reiziger in database
+        rdao.save(reiziger);
+//        rdao.update(reiziger);
+//        rdao.delete(reiziger);
+
+//        adres in database
+        adao.save(adres);
+//        adao.update(adres);
+//        adao.delete(adres);
+
+//
+
+
+//        close the session
+        session.close();
     }
 }

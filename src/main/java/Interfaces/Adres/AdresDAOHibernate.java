@@ -5,20 +5,24 @@ import Domein.Reiziger;
 import Interfaces.Product.ProductDAO;
 import Interfaces.Reiziger.ReizigerDAO;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
 public class AdresDAOHibernate implements AdresDAO {
     private Session session;
+    private Transaction tx;
 
-    public AdresDAOHibernate(Session session) {
+    public AdresDAOHibernate(Session session, Transaction tx) {
         this.session = session;
+        this.tx = tx;
     }
 
     @Override
     public boolean save(Adres adres) {
         try {
             session.save(adres);
+            tx.commit();
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -30,6 +34,7 @@ public class AdresDAOHibernate implements AdresDAO {
     public boolean update(Adres adres) {
         try {
             session.update(adres);
+            tx.commit();
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -41,6 +46,7 @@ public class AdresDAOHibernate implements AdresDAO {
     public boolean delete(Adres adres) {
         try {
             session.delete(adres);
+            tx.commit();
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -60,6 +66,12 @@ public class AdresDAOHibernate implements AdresDAO {
 
     @Override
     public List<Adres> findAll() {
+//        try {
+//            return session.createQuery("SELECT * FROM adres ", Adres.class).getResultList();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//            return null;
+//        }
         return null;
     }
 }

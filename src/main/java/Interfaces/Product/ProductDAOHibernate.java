@@ -2,32 +2,76 @@ package Interfaces.Product;
 
 import Domein.OVChipkaart;
 import Domein.Product;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
 public class ProductDAOHibernate implements ProductDAO {
+    private Session session;
+    private Transaction tx;
+
+    public ProductDAOHibernate(Session session, Transaction tx) {
+        this.session = session;
+        this.tx = tx;
+    }
+
     @Override
     public boolean save(Product product) {
-        return false;
+        try {
+            session.save(product);
+            tx.commit();
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     @Override
     public boolean update(Product product) {
-        return false;
+        try {
+            session.update(product);
+            tx.commit();
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     @Override
     public boolean delete(Product product) {
-        return false;
+        try {
+            session.delete(product);
+            tx.commit();
+
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     @Override
     public List<Product> findByOVChipkaart(OVChipkaart ovChipkaart) {
-        return null;
+        try {
+            return session.createQuery("from product", Product.class).getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     @Override
     public List<Product> findAll() {
-        return null;
+        try {
+            return session.createQuery("from product", Product.class).getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

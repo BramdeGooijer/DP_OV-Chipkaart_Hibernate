@@ -23,7 +23,7 @@ public class OVChipkaart {
     @JoinColumn(name = "reiziger_id")
     private Reiziger reiziger;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "ov_chipkaart_product",
             joinColumns = @JoinColumn(name = "kaart_nummer"),
