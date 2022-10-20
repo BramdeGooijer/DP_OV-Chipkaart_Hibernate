@@ -58,6 +58,10 @@ public class Product {
         this.prijs = prijs;
     }
 
+    public List<OVChipkaart> getAllOVChipkaarten() {
+        return allOVChipkaarten;
+    }
+
     @Override
     public String toString() {
         return String.format("Product {%s, %s, %s, %s}", this.product_nummer, this.naam, this.beschrijving, this.prijs);

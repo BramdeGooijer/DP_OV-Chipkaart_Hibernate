@@ -66,12 +66,11 @@ public class AdresDAOHibernate implements AdresDAO {
 
     @Override
     public List<Adres> findAll() {
-//        try {
-//            return session.createQuery("SELECT * FROM adres ", Adres.class).getResultList();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            return null;
-//        }
-        return null;
+        try {
+            return session.createQuery("FROM adres ", Adres.class).getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

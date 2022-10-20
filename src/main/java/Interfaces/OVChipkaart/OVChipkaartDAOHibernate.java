@@ -6,6 +6,7 @@ import Interfaces.Reiziger.ReizigerDAO;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OVChipkaartDAOHibernate implements OVChipkaartDAO {
@@ -59,7 +60,13 @@ public class OVChipkaartDAOHibernate implements OVChipkaartDAO {
     @Override
     public List<OVChipkaart> findByReiziger(Reiziger reiziger) {
         try {
-            return session.createQuery("from ov_chipkaart", OVChipkaart.class).getResultList();
+            List<OVChipkaart> alleOVChipkaarten = new ArrayList<>();
+            for(OVChipkaart perOVChipkaart : session.createQuery("from ov_chipkaart" ,OVChipkaart.class).getResultList()) {
+                if (perOVChipkaart.getReiziger().equals(reiziger)) {
+                    alleOVChipkaarten.add(perOVChipkaart);
+                }
+            }
+            return  alleOVChipkaarten;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

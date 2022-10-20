@@ -60,6 +60,10 @@ public class OVChipkaart {
         return saldo;
     }
 
+    public List<Product> getAlleProducten() {
+        return alleProducten;
+    }
+
     public Reiziger getReiziger() {
         return reiziger;
     }

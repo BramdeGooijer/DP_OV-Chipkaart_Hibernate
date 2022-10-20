@@ -4,7 +4,9 @@ import Domein.Reiziger;
 import Interfaces.Adres.AdresDAO;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import java.sql.Date;
 import java.util.List;
 
 public class ReizigerDAOHibernate implements ReizigerDAO {
@@ -68,8 +70,9 @@ public class ReizigerDAOHibernate implements ReizigerDAO {
     @Override
     public List<Reiziger> findByGbDatum(String datum) {
         try {
-//            return session.get(Reiziger.class, Date.valueOf(datum));
-            return null;
+            Query query =  session.createQuery("from reiziger where geboortedatum = :datum", Reiziger.class);
+            query.setParameter("datum", datum);
+            return query.getResultList();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
@@ -78,12 +81,11 @@ public class ReizigerDAOHibernate implements ReizigerDAO {
 
     @Override
     public List<Reiziger> findAll() {
-//        try {
-//            return session.createQuery("SELECT * FROM reiziger ", Reiziger.class).getResultList();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            return null;
-//        }
-        return null;
+        try {
+            return session.createQuery("FROM reiziger ", Reiziger.class).getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }
