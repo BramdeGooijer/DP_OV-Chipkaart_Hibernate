@@ -30,6 +30,14 @@ public class Product {
 
     }
 
+    public void addOVChipkaart(OVChipkaart ovChipkaart) {
+        allOVChipkaarten.add(ovChipkaart);
+    }
+
+    public void removeOVChipkaart(OVChipkaart ovChipkaart) {
+        allOVChipkaarten.remove(ovChipkaart);
+    }
+
     public int getProduct_nummer() {
         return product_nummer;
     }

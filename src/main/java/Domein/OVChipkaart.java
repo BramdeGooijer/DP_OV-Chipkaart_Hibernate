@@ -44,6 +44,16 @@ public class OVChipkaart {
 
     }
 
+    public void addProduct(Product product) {
+        alleProducten.add(product);
+        product.addOVChipkaart(this);
+    }
+
+    public void removeProduct(Product product) {
+        alleProducten.remove(product);
+        product.removeOVChipkaart(this);
+    }
+
     public int getKaart_nummer() {
         return kaart_nummer;
     }

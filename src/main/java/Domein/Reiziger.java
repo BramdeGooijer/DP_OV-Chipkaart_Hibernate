@@ -41,6 +41,10 @@ public class Reiziger {
         alleOVChipkaarten.add(ovChipkaart);
     }
 
+    public void removeOVChipkaart(OVChipkaart ovChipkaart) {
+        alleOVChipkaarten.remove(ovChipkaart);
+    }
+
     public Reiziger() {
 
     }
